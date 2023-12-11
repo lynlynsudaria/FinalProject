@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="global.css">
+    <title>Employee Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+     <!-- Top Navigation Bar -->
+     <nav class="bg-blue-500 p-4 text-white fixed w-full top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-xl font-semibold"><h1 class="text-2xl font-semibold">Employee Management System</h1></div>
+            <div class="flex space-x-4">
+                <i class="fas fa-user"></i>Employee
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Sidebar -->
+    <div class="sidenav">
+        <div class="bg-gray-800 text-white h-screen fixed top-0 left-0 overflow-y-auto transition-all duration-300 ease-in-out sidebar">
+            <div class="p-4"></div>
+            <i class="fas fa-user" style="font-size: 24px; margin-bottom: 30px;"></i> EMPLOYEE ACCOUNT
+        
+            <a href="adminHome.html"><i class="fas fa-home"></i> Dashboard</a>
+            <button class="dropdown-btn"><i class="fas fa-building"></i> My Profile 
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-container">
+                <a href="#">Update Personal Info</a>
+              </div>
+
+              <button class="dropdown-btn"><i class="fas fa-users"></i> Salary 
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-container">
+                <a href="#">View Salary</a>
+              </div>
+
+              <button class="dropdown-btn"><i class="fas fa-calendar-alt"></i>Leave
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-container">
+                <a href="#">Apply Leave</a>
+                <a href="#">My Leave History</a>
+              </div>
+
+              <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+      </div>
+    </div>
+      
+    <!-- Main Content -->
+    <div class="main">
+        <!-- Bootstrap Cards -->
+    <div class="row">
+        <div class="col-md-3 mt-24">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Department</h5>
+                    <p class="card-text">Manage departments</p><br>
+                    <a href="#news" class="btn btn-primary">Go to Department</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-24">
+            <div class="card bg-secondary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Employee</h5>
+                    <p class="card-text">Manage employees</p><br>
+                    <a href="#" class="btn btn-primary">Go to Employee</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-24">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Employee Leave</h5>
+                    <p class="card-text">Manage leave requests</p><br>
+                    <a href="#news" class="btn btn-primary">Go to Leave Management</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-24">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Salary Table</h5>
+                    <p class="card-text">View overall performance</p><br>
+                    <a href="#" class="btn btn-primary">Go to Salary Table</a>
+                </div>
+            </div>
+        </div>
+    </div>
+      </div>
+      <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+        
+        for (i = 0; i < dropdown.length; i++) {
+          dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+            } else {
+              dropdownContent.style.display = "block";
+            }
+          });
+        }
+        </script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
