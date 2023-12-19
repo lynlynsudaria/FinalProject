@@ -19,13 +19,13 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" disabled/>
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"  autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -47,6 +47,24 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="contact" :value="__('Address')" />
+            <x-text-input id="contact" name="contact" type="text" class="mt-1 block w-full" :value="old('address', $user->address)"  autofocus autocomplete="contact" value="San Juan City" />
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        <div>
+            <x-input-label for="department" :value="__('Department')" />
+            <x-text-input id="department" name="department" type="text" class="mt-1 block w-full" :value="old('address',$user->department)" autofocus autocomplete="department" disabled value="Vertical" />
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        <div>
+            <x-input-label for="contact" :value="__('Contact Number')" />
+            <x-text-input id="contact" name="contact" type="text" class="mt-1 block w-full" :value="old('address',$user->contact_number)"  autofocus autocomplete="contact" value="+63912345678"/>
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
@@ -57,7 +75,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >{{ __('Profile Saved.') }}</p>
             @endif
         </div>
     </form>
