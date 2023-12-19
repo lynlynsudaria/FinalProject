@@ -23,22 +23,7 @@
         <a href="aboutus"><i class="fas fa-info-circle"></i> About Us</a>
     </div>
 
-    <div class="py-12" style="margin-left:250px;">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-<div class="p-6 text-gray-900">
-                    @if(session('success'))
-                    <div class="alert alert-success">
-                        {!! session('success') !!}
-                    </div>
-                    @endif
-                    <p class="text-right">
-                        @if(auth()->user()->role->role == 'admin')
-                        <a href="/employee" class="btn btn-secondary">Add Leave</a>
-                        @endif
-                    </p>
-
-    <table class="table">
+    <table class="table" style="margin-left: 250px;">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -60,11 +45,6 @@
             @endforeach
         </tbody>
     </table>
-    {{ $leaves->links() }}
-    </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Simulating user status (online or offline)

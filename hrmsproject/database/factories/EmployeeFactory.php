@@ -27,7 +27,6 @@ class EmployeeFactory extends Factory
             'contact_number' => $this->faker->phoneNumber,
             'date_hired' => $this->faker->date,
             'gender' => $this->faker->randomElement(['male', 'female']),
-            'status' => $this->faker->randomElement(['active', 'inactive']),
         ];
     }
 }

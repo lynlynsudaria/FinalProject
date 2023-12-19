@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('contact_number')->nullable();
             $table->date('date_hired')->nullable();
             $table->string('gender')->nullable();
-            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\AdministratorController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\JsonResponse;
 
@@ -41,7 +42,7 @@ Route::get('/employee/{id}', [EmployeeController::class, 'show']);
 Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit']);
 Route::get('/employee/', [EmployeeController::class, 'create']);
 Route::post('/employee/', [EmployeeController::class, 'store']);
-Route::put('/employee/{id}/update', [EmployeeController::class, 'update']);
+Route::put('/employee/{id}', [EmployeeController::class, 'update']);
 Route::delete('/employee/{id}', [EmployeeController::class, 'destroy']);
 
 //route for the employeedepartment
@@ -59,7 +60,7 @@ Route::get('/department/{id}', [DepartmentController::class, 'show']);
 Route::get('/department/{id}/edit', [DepartmentController::class, 'edit']);
 Route::get('/department/', [DepartmentController::class, 'create']);
 Route::post('/department/', [DepartmentController::class, 'store']);
-Route::put('/department/{id}/update', [DepartmentController::class, 'update']);
+Route::put('/department/{id}/', [DepartmentController::class, 'update']);
 Route::delete('/department/{id}', [DepartmentController::class, 'destroy']);
 
 //routes for leave
@@ -88,6 +89,12 @@ Route::get('/administrator/', [AdministratorController::class, 'create']);
 Route::post('/administrator/', [AdministratorController::class, 'store']);
 Route::put('/administrator/{id}/update', [AdministratorController::class, 'update']);
 Route::delete('/administrator/{id}', [AdministratorController::class, 'destroy']);
+
+// routes for about us
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // routes for user
 Route::get('/user', function(){

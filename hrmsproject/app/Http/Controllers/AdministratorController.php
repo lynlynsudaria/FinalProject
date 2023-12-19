@@ -17,7 +17,7 @@ class AdministratorController extends Controller
                 // return $administrators;
     
                 // return view('department.index');
-                return view('dashboard');
+                return view('welcome');
             }
                 else{
                     return 'Restricted page';

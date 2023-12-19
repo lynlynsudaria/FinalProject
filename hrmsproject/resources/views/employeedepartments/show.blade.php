@@ -24,59 +24,32 @@
     <a href="aboutus"><i class="fas fa-info-circle"></i> About Us</a>
 </div>
 
-<div class="py-12" style="margin-left:250px;">
+<div class="py-12" style="margin-left:250px; margin-top:5px;">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if(session('success'))
+            <div class="alert alert-success">
+                {!! session('success') !!}
+            </div>
+            @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-<div class="p-6 text-gray-900">
-                    @if(session('success'))
-                    <div class="alert alert-success">
-                        {!! session('success') !!}
-                    </div>
-                    @endif
-                    <p class="text-right">
-                        @if(auth()->user()->role->role == 'admin')
-                        <a href="/employee" class="btn btn-secondary">Add Employee</a>
-                        @endif
-                    </p>
-
-    <table class="table" >
-  <thead>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Age</th>
-      <th scope="col">Birthday</th>
-      <th scope="col">Email</th>
-      <th scope="col">Contact No.</th>
-      <th scope="col">Date Hired</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Status</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($employees as $index => $item)
-    <tr>
-      <th scope="row">{{$index+1}}</th>
-      <td><a class="link-underline-primary link-primary" href="/employee/{{ $item->id }}">{{ $item->name }}</a></td>
-      <td>{{$item->address}}</td>
-      <td>{{$item->age}}</td>
-      <td>{{$item->birthday}}</td>
-      <td>{{$item->contact_no}}</td>
-      <td>{{$item->email}}</td>
-      <td>{{$item->date_hired}}</td>
-      <td>{{$item->gender}}</td>
-      <td>{{$item->status}}</td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-{{ $employees->links() }}
-</div>
+                <div class="p-6 text-gray-900">
+                   <div class="jumbotron">
+                   <h1 class="display-4">Employee Department Details</h1>
+                        <p class="lead">Employee ID: {{ $employeeDepartment->employee_id }}</p>
+                        <p>Department ID: {{ $employeeDepartment->department_id }}</p>
+                        <p>Leave: {{ $employeeDepartment->leave ? 'Yes' : 'No' }}</p>
+                        <p>Salary: {{ $employeeDepartment->salary }}</p>
+                        <hr class="my-4">
+                        <p>{{ Carbon\Carbon::parse($employeeDepartment->created_at)->format('M d, Y') }} ({{ Carbon\Carbon::parse($employeeDepartment->created_at)->diffForHumans() }})</p>
+                        <br>
+                        <a href="/employeeDepartments" class="text-black btn btn-secondary">Back</a>
+                        <a href="/employeeDepartment/{{ $employeeDepartment->id }}/edit" class="text-black btn btn-success">Edit</a>
+                </div>
+                </div>
             </div>
         </div>
     </div>
+
 <script>
     // Simulating user status (online or offline)
     const isUserOnline = true; // Set to true for online, false for offline
