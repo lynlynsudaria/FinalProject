@@ -21,7 +21,6 @@ class Employee extends Model
         'contact_number',
         'date_hired',
         'gender',
-        'is_active_flag',
     ];
 
     public function employeeDepartments(){
@@ -34,6 +33,10 @@ class Employee extends Model
 
     public function salaries(){
         return $this->hasMany(Salary::class);
+    }
+    public function departments()
+    {
+        return $this->belongsToMany(Department::class, 'employee_departments');
     }
 
     

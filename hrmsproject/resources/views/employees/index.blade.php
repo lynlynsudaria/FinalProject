@@ -1,70 +1,9 @@
-
 <x-app-layout>
 <x-slot name="header">
-    <h1 class="font-semibold text-xl text-gray-800 leading-tight" style="margin-left: 700px;">
+    <h1 class="font-semibold text-xl text-gray-800 leading-tight" style="margin-left: 650px;">
         EMPLOYEE MANAGEMENT
     </h1>
 </x-slot>
-
-    <!-- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900"> -->
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: grey;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
-
-.search-bar {
-    padding: 6px 8px 6px 16px;
-    margin-top: 10px;
-    
-       }
-
-          .search-input {
-          width: 100%;
-          padding: 8px;
-          margin-top: 8px;
-          box-sizing: border-box;
-       }
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-</style>
-
 
 <div class="sidenav">
 
@@ -82,51 +21,62 @@ body {
     <a href="employees"><i class="fas fa-user"></i> Employee</a>
     <a href="salaries"><i class="fas fa-money-bill"></i> Salary</a>
     <a href="leaves"><i class="fas fa-calendar-alt"></i> Leave</a>
-    <a href="#about"><i class="fas fa-info-circle"></i> About Us</a>
-
-
+    <a href="aboutus"><i class="fas fa-info-circle"></i> About Us</a>
 </div>
 
-  
-                <!-- </div>
-            </div>
-        </div>
-    </div> -->
-    <table class="table" style="margin-left: 250px;">
+<div class="py-12" style="margin-left:250px;">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+<div class="p-6 text-gray-900">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {!! session('success') !!}
+                    </div>
+                    @endif
+                    <p class="text-right">
+                        @if(auth()->user()->role->role == 'admin')
+                        <a href="/employee" class="btn btn-secondary">Add Employee</a>
+                        @endif
+                    </p>
+
+    <table class="table" >
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Age</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact No.</th>
+      <th scope="col">Date Hired</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Status</th>
+      
     </tr>
   </thead>
   <tbody>
-  @foreach($departments as $department)
+  @foreach($employees as $index => $item)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+      <th scope="row">{{$index+1}}</th>
+      <td><a class="link-underline-primary link-primary" href="/employee/{{ $item->id }}">{{ $item->name }}</a></td>
+      <td>{{$item->address}}</td>
+      <td>{{$item->age}}</td>
+      <td>{{$item->birthday}}</td>
+      <td>{{$item->contact_no}}</td>
+      <td>{{$item->email}}</td>
+      <td>{{$item->date_hired}}</td>
+      <td>{{$item->gender}}</td>
+      <td>{{$item->status}}</td>
     </tr>
     @endforeach
   </tbody>
 </table>
-
-
-
-<!-- </x-app-layout> -->
+{{ $employees->links() }}
+</div>
+            </div>
+        </div>
+    </div>
 <script>
     // Simulating user status (online or offline)
     const isUserOnline = true; // Set to true for online, false for offline
@@ -143,3 +93,4 @@ body {
         statusIndicator.style.color = 'red'; // Set the color for offline status
     }
 </script>
+</x-app-layout>
