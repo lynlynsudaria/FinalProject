@@ -14,7 +14,7 @@ class Employee extends Model
     protected $fillable = [
         'name',
         'address',
-        'iage',
+        'age',
     ];
 
     public function employeeDepartments(){

@@ -9,9 +9,7 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\AdministratorController;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\JsonResponse;
-
-
+use App\Http\Controllers\EmployeeInfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +34,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//routes for employeesInfo
+Route::get('/employeeInfo', [EmployeeInfoController::class, 'index']);
+Route::get('/employeeInfo/{id}', [EmployeeInfoController::class, 'show']);
+Route::get('/employeeInfo/{id}/edit', [EmployeeInfoController::class, 'edit']);
+Route::get('/employeeInfo', [EmployeeInfoController::class, 'create']);
+Route::post('/employeeInfo', [EmployeeInfoController::class, 'store']);
+Route::put('/employeeInfo/{id}/update', [EmployeeInfoController::class, 'update']);
+Route::delete('/employeeInfo/{id}', [EmployeeInfoController::class, 'destroy']);
 //route for employee
 Route::get('/employees', [EmployeeController::class, 'index']);
 Route::get('/employee/{id}', [EmployeeController::class, 'show']);

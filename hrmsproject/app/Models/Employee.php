@@ -17,6 +17,7 @@ class Employee extends Model
         'age',
         'birthday',
         'email',
+        
         'contact_number',
         'date_hired',
         'gender',

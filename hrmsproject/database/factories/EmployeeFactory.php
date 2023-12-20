@@ -22,7 +22,7 @@ class EmployeeFactory extends Factory
             'age' => rand(18, 65),
             'address' => $this->faker->city,
             'birthday' => $this->faker->date,
-            'department' => $this->faker->word,
+            // 'department' => $this->faker->word,
             'email' => $this->faker->email,
             'contact_number' => $this->faker->phoneNumber,
             'date_hired' => $this->faker->date,
