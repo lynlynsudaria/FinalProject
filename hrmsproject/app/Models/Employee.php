@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\EmployeeDepartments;
+use App\Models\Leave;
+use App\Models\Salary;
+use App\Models\Department;
 
 class Employee extends Model
 {
@@ -17,10 +21,10 @@ class Employee extends Model
         'age',
         'birthday',
         'email',
-        
         'contact_number',
         'date_hired',
-        'gender',
+        'gender'
+        
     ];
 
     public function employeeDepartments(){

@@ -87,10 +87,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="contactno" class="form-label">Contact No.</label>
-                            <input type="number" class="form-control" id="contactno" name="contactno"  aria-describedby="contactno" value="{{ old('contactno') }}">
+                            <label for="contact_number" class="form-label">Contact No.</label>
+                            <input type="number" class="form-control" id="contact_number" name="contact_number"  aria-describedby="contact_number" value="{{ old('contact_number') }}">
                             <br>
-                            @error('contactno')
+                            @error('contact_number')
                             <p class="alert alert-danger">
                                 {{$message}}
                             </p>
@@ -98,10 +98,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="datehired" class="form-label">Date Hired</label>
-                            <input type="date" class="form-control" id="datehired" name="datehired"  aria-describedby="datehired" value="{{ old('datehired') }}">
+                            <label for="date_hired" class="form-label">Date Hired</label>
+                            <input type="date" class="form-control" id="date_hired" name="date_hired"  aria-describedby="date_hired" value="{{ old('date_hired') }}">
                             <br>
-                            @error('datehired')
+                            @error('date_hired')
                             <p class="alert alert-danger">
                                 {{$message}}
                             </p>
@@ -109,8 +109,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="gender" class="form-label">Gender</label>
-                            <input type="text" class="form-control" id="gender" name="gender" aria-describedby="gender" value="{{ old('gender') }}">
+                        <label for="gender">Gender</label><br>
+                            <select name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                           
+                            </select>
                             
                             @error('gender')
                                 <p class="alert alert-danger">
@@ -119,7 +123,7 @@
                             @enderror
                         </div>
 
-    
+                        
                         <a href="/employees" class="text-black btn btn-secondary">Back</a>
                         <button type="submit" class="text-black btn btn-success">Submit</button>
                     </form>

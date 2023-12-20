@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\{Employee, Salary, Leave, EmployeeDepartment};
 
@@ -11,6 +11,7 @@ class EmployeeController extends Controller
     public function index(){
         //get the current user role
         $currentUserRole = auth()->user()->role->role;
+        
 
         //check if the current user role is admin, if not, return restricted page.
         if($currentUserRole == 'admin'){
@@ -69,34 +70,37 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request){
-        
+       
         //validate the inputs
         try{
             //implementation of the atomic principle
             DB::beginTransaction();
-        $validatedEmployeeData = $request->validate([
-            'name' => 'required|string|min:2|max:255',
-            'address' => 'required|string|min:5|max:255',
-            'age' => 'required|integer|min:18|max:99',
-            'birthday' => 'required|date',
-            'email' => 'required|email|max:255',
-            'contact_number' => 'required|string|min:10|max:20',
-            'date_hired' => 'required|date',
-            'gender' => 'required|in:Male,Female,',
-              
-        ]);
 
+             $validatedEmployeeData = $request->validate([
+                'name'=> 'required|string|min:2|max:255',
+                'address'=> 'required|string|min:5|max:255',
+                'age'=>'required|integer|min:18|max:99',
+                'birthday'=> 'required',
+                'email'=> 'required|max:255',
+                'contact_number'=> 'required|min:10|max:20',
+                'date_hired'=> 'required',
+                'gender'=> 'required|string',
+            ]);
+                
+            DB::commit();
+            
         //insert new employee
-        $employee = Employee::create($validatedEmployeeData);
-
-        DB::commit();
+            $employee = Employee::create($validatedEmployeeData);
+   
          //redirect to the new page
-         return redirect('/employee/'.$employee->id)->with('success', 'Success!');
+            return redirect('/employee/'.$employee->id)->with('success', 'Success!');
 
-        }catch(\Exception $e){
+        }
+        catch(\Exception $e){
             DB::rollBack();
     }
 }
+
     // public function create()
     // {
     //     return view('employees.create'); // Create a blade file for your form
@@ -164,16 +168,15 @@ class EmployeeController extends Controller
     public function destroy($id){
             try{
                 //implementation of the atomic principle
-                DB::beginTransaction();
-                EmployeeDepartment::where('employee_id', $id)->delete();
-                Leave::where('employee_id', $id)->delete();
-                Salary::where('employee_id',$id )->delete();
+            DB::beginTransaction();
+                EmployeeDepartment::where('employee_id', $id)->delete();                
                 Employee::where('id', $id)->delete();
             DB::commit();
         
             return redirect('/employees')->with('success', 'Success!');
         
         }catch(\Exception $e){
+            
             DB::rollBack();
         }
         

@@ -48,7 +48,7 @@ Route::get('/employees', [EmployeeController::class, 'index']);
 Route::get('/employee/{id}', [EmployeeController::class, 'show']);
 Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit']);
 Route::get('/employee/', [EmployeeController::class, 'create']);
-Route::post('/employee/', [EmployeeController::class, 'store']);
+Route::post('/employee', [EmployeeController::class, 'store']);
 Route::put('/employee/{id}', [EmployeeController::class, 'update']);
 Route::delete('/employee/{id}', [EmployeeController::class, 'destroy']);
 
