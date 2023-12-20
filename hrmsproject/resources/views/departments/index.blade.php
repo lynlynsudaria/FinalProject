@@ -1,4 +1,3 @@
-
 <x-app-layout>
 <x-slot name="header">
     <h1 class="font-semibold text-xl text-gray-800 leading-tight" style="margin-left: 650px;">
@@ -23,49 +22,46 @@
     <a href="salaries"><i class="fas fa-money-bill"></i> Salary</a>
     <a href="leaves"><i class="fas fa-calendar-alt"></i> Leave</a>
     <a href="aboutus"><i class="fas fa-info-circle"></i> About Us</a>
-
-
 </div>
+
 <div class="py-12" style="margin-left:250px;">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+<div class="p-6 text-gray-900">
                     @if(session('success'))
-                        <div class="alert alert-success">
-                            {!! session('success') !!}
-                        </div>
+                    <div class="alert alert-success">
+                        {!! session('success') !!}
+                    </div>
                     @endif
                     <p class="text-right">
                         @if(auth()->user()->role->role == 'admin')
-                            <a href="/department" class="btn btn-secondary">Add Department</a>
+                        <a href="/department" class="btn btn-secondary">Add Department</a>
                         @endif
                     </p>
 
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">No.</th>
-                                <th scope="col">Department Name</th>
-                                <!-- Add more columns if needed -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($departments as $index => $item)
-                                <tr>
-                                    <th scope="row">{{$index+1}}</th>
-                                    <td><a class="link-underline-primary link-primary" href="/department/{{ $item->id }}">{{ $item->department }}</a></td>
-                                    <!-- Add more columns if needed -->
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $departments->links() }}
-                </div>
+    <table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Department</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  @foreach($departments as $index => $item)
+    <tr>
+      <th scope="row">{{$index+1}}</th>
+      <td><a class="link-underline-primary link-primary" href="/department/{{ $item->id }}">{{ $item->department }}</a></td>
+      
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+{{ $departments->links() }}
+</div>
             </div>
         </div>
     </div>
-
-
 <script>
     // Simulating user status (online or offline)
     const isUserOnline = true; // Set to true for online, false for offline
@@ -83,6 +79,3 @@
     }
 </script>
 </x-app-layout>
-
-
-

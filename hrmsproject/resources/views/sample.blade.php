@@ -1,65 +1,194 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight" style="margin-left: 650px;">
-            EMPLOYEE LEAVE MANAGEMENT
-        </h1>
-    </x-slot>
+<?php
 
-    <div class="sidenav">
-        <a href="#" class="admin-link" style="margin-top: 30px;">
-            <span style="margin-right: 10px;">👤</span> Administrator
-            <div id="status-indicator" style="margin-left: 60px;"></div>
-        </a>
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
-        <div class="search-bar" style="margin-bottom: 20px;">
-            <input type="text" class="search-input" placeholder="Search...">
-        </div>
+use Illuminate\Http\Request;
+use App\Models\Department, EmployeeDepartment;
 
-        <a href="dashboard"><i class="fas fa-home"></i> Dashboard</a>
-        <a href="departments"><i class="fas fa-wrench"></i> Department</a>
-        <a href="employees"><i class="fas fa-user"></i> Employee</a>
-        <a href="salaries"><i class="fas fa-money-bill"></i> Salary</a>
-        <a href="leaves"><i class="fas fa-calendar-alt"></i> Leave</a>
-        <a href="aboutus"><i class="fas fa-info-circle"></i> About Us</a>
-    </div>
+class DepartmentController extends Controller
+{
+//     public function index(){
+//         $departments = Department::all();
 
-    <table class="table" style="margin-left: 250px;">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Leave Type</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($leaves as $index => $leave)
-                <tr>
-                    <th scope="row">{{$index+1}}</th>
-                    <td>{{$leave->leave_type}}</td>
-                    <td>{{$leave->start_date}}</td>
-                    <td>{{$leave->end_date}}</td>
-                    <td>{{$leave->is_active_flag}}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+//         // return $departments;
+//         return view('departments.index', ['departments' => $departments]);
+//     }
 
-    <script>
-        // Simulating user status (online or offline)
-        const isUserOnline = true; // Set to true for online, false for offline
+//     public function show($id){
+//         $department = Department::find($id);
 
-        // Get the status indicator element
-        const statusIndicator = document.getElementById('status-indicator');
+//         return $department;
+//     }
 
-        // Update the indicator based on the user's status
-        if (isUserOnline) {
-            statusIndicator.innerHTML = 'Online';
-            statusIndicator.style.color = 'green'; // Set the color for online status
-        } else {
-            statusIndicator.innerHTML = 'Offline';
-            statusIndicator.style.color = 'red'; // Set the color for offline status
-        }
-    </script>
-</x-app-layout>
+//     public function create(){
+//         //
+//     }
+
+//     public function store(Request $request){
+
+//         //validate the inputs
+//         $validated = $request->validate([
+//             'department' => 'required|string|min:2|max:25',
+//             'schedule' => 'required|string|min:5|max:10',
+//             'is_active_flag' => 'required|boolean'
+//         ]);
+
+//         //insert new entry
+//         $department = Department::create($validated);
+
+//         return $department;
+
+//     }
+
+//     public function edit($id){
+//         $department = Department::find($id);
+
+//         return $department;
+//     }
+
+//     public function update(Request $request, $id){
+        
+//         //validate the inputs
+//         $validated = $request->validate([
+//             'department' => 'required|string|min:2|max:25',
+//             'schedule' => 'required|string|min:5|max:10',
+//             'is_active_flag' => 'required|boolean'
+//         ]);
+//         //update the entry
+//         $department = Department::where('id', $id)->update($validated);
+
+//         return $department;
+//     }
+
+//     public function destroy($id){
+//         $department = Department::where('id', $id)->delete();
+
+//         return $department;
+//     }
+// }
+public function index(){
+    //get the current user role
+    $currentUserRole = auth()->user()->role->role;
+
+    //check if the current user role is admin, if not, return restricted page.
+    if($currentUserRole == 'admin'){
+        $departments=Department::paginate(10);
+
+        return view('departments.index', compact('departments'));
+    }
+    else{
+        return 'Restricted page';
+    }
+
+}
+
+
+public function show($id){
+     //get the current user role
+     $currentUserRole = auth()->user()->role->role;
+
+     //check if the current user role is admin, if not, return restricted page.
+     if($currentUserRole == 'admin'){
+    $department = Department::find($id);
+
+    return view('departments.show',compact('department'));
+    }
+    else{
+        return 'Restricted page';
+    }
+
+}
+public function edit($id){
+    //get the current user role
+    $currentUserRole = auth()->user()->role->role;
+
+    //check if the current user role is admin, if not, return restricted page.
+    if($currentUserRole == 'admin'){
+    $department = Department::find($id);
+
+    return view('departments.edit',compact('department'));
+    }
+    else{
+        return 'Restricted page';
+    }
+}
+
+ public function create(){
+    //get the current user role
+    $currentUserRole = auth()->user()->role->role;
+
+    //check if the current user role is admin, if not, return restricted page.
+    if($currentUserRole == 'admin'){
+        return view('departments.create');
+    }
+    else{
+        return 'Restricted page';
+    }
+}
+
+public function store(Request $request){
+
+    //validate the inputs
+    $validatedData = $request->validate([
+        'department' => 'required|string|min:2|max:25',
+        'is_active_flag' => 'required|boolean',
+        
+    ]);
+
+    //insert new department
+    $department = Department::create($validatedData);
+
+     //redirect to the new page
+     return redirect('/department/'.$department->id)->with('success', 'Success!');
+
+}
+
+
+public function update(Request $request, $id){
+    try{
+        //validate the inputs
+    $validatedData = $request->validate([
+        'department' => 'required|string|min:2|max:25',
+        'is_active_flag' => 'required|boolean'
+    ]);
+    //iupdate the  new sdepartment
+    $department = Department::where('id', $id)->update($validatedData);
+
+    //redirect to the new page
+    return redirect('/department/'.$id)->with('success', 'Success!');
+}
+
+
+}catch(\Exception $e){
+   return $e;
+}
+   
+
+public function destroy($id){
+    try{
+        //implementation of the atomic principle
+        DB::beginTransaction();
+        EmployeeDepartment::where('department_id', $id)->delete();
+        Department::where('id', $id)->delete();
+    DB::commit();
+
+    return redirect('/departments')->with('success', 'Success!');
+
+}catch(\Exception $e){
+    DB::rollBack();
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

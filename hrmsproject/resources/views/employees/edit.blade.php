@@ -40,7 +40,7 @@
                         </div>
         
 
-                        <div class="mb-3 row">
+                        <!-- <div class="mb-3 row">
     <div class="col-md-6">
         <label for="address" class="form-label">Address</label>
         <textarea class="form-control" id="address" aria-describedby="address" name="address">{{ old('address', $employee->address) }}</textarea>
@@ -59,7 +59,7 @@
             </p>
         @enderror
     </div>
-</div>
+</div> -->
 
 
 
@@ -175,18 +175,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel" >Delete</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            
+
             <div class="modal-body">
-               Are you sure you want to delete this student?
+               Are you sure you want to delete this employee?
             </div>
             <div class="modal-footer">
                 <button type="button" class="text-black btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <form action="/employee/{{ $employee->id }}" method="POST">
                     @csrf
                     @method('DELETE')
-                <button type="submit" class="text-black btn btn-danger">Confirm</button>
+                <button type="submit" class="text-black btn btn-danger" value="DELETE">Confirm</button>
                 </form>
             </div>
         </div>

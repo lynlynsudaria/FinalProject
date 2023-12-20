@@ -69,9 +69,12 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request){
-
+        
         //validate the inputs
-        $validatedData = $request->validate([
+        try{
+            //implementation of the atomic principle
+            DB::beginTransaction();
+        $validatedEmployeeData = $request->validate([
             'name' => 'required|string|min:2|max:255',
             'address' => 'required|string|min:5|max:255',
             'age' => 'required|integer|min:18|max:99',
@@ -79,18 +82,55 @@ class EmployeeController extends Controller
             'email' => 'required|email|max:255',
             'contact_number' => 'required|string|min:10|max:20',
             'date_hired' => 'required|date',
-            'gender' => 'required|in:Male,Female,male,female',
-            // 'is_active_flag' =>'required|boolean',
-            
+            'gender' => 'required|in:Male,Female,',
+              
         ]);
 
         //insert new employee
-        $employee = Employee::create($validatedData);
+        $employee = Employee::create($validatedEmployeeData);
 
+        DB::commit();
          //redirect to the new page
          return redirect('/employee/'.$employee->id)->with('success', 'Success!');
 
+        }catch(\Exception $e){
+            DB::rollBack();
     }
+}
+    // public function create()
+    // {
+    //     return view('employees.create'); // Create a blade file for your form
+    // }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string',
+    //         'address' => 'required|string',
+    //         'age' => 'required|integer',
+    //         'birthday' => 'required|date',
+    //         'email' => 'required|email|unique:employees,email',
+    //         'contact_number' => 'required|string',
+    //         'date_hired' => 'required|date',
+    //         'gender' => 'required|string',
+    //         // Add other validation rules for your fields
+    //     ]);
+
+    //     // Create a new employee
+    //     $employee = Employee::create([
+    //         'name' => $request->input('name'),
+    //         'address' => $request->input('address'),
+    //         'age' => $request->input('age'),
+    //         'birthday' => $request->input('birthday'),
+    //         'email' => $request->input('email'),
+    //         'contact_number' => $request->input('contact_number'),
+    //         'date_hired' => $request->input('date_hired'),
+    //         'gender' => $request->input('gender'),
+    //         // Add other fields as needed
+    //     ]);
+    //     return redirect()->route('employees.index')->with('success', 'Employee added successfully.');
+    //     // return redirect('/employees')->with('success', 'Employee added successfully.');
+    // }
 
 
     public function update(Request $request, $id){
@@ -112,7 +152,7 @@ class EmployeeController extends Controller
 
         //redirect to the new page
         return redirect('/employee/'.$id)->with('success', 'Success!');
-
+        
     }catch(\Exception $e){
        return $e;
     }
@@ -122,20 +162,41 @@ class EmployeeController extends Controller
     }
 
     public function destroy($id){
-        try{
-            //implementation of the atomic principle
-            DB::beginTransaction();
-            EmployeeDepartment::where('employee_id', $id)->delete();
-            Leave::where('employee_id', $id)->delete();
-            Salary::where('employee_id',$id )->delete();
-            Employee::where('id', $id)->delete();
-        DB::commit();
-
-        return redirect('/employees')->with('success', 'Success!');
-
-    }catch(\Exception $e){
-        DB::rollBack();
+            try{
+                //implementation of the atomic principle
+                DB::beginTransaction();
+                EmployeeDepartment::where('employee_id', $id)->delete();
+                Leave::where('employee_id', $id)->delete();
+                Salary::where('employee_id',$id )->delete();
+                Employee::where('id', $id)->delete();
+            DB::commit();
+        
+            return redirect('/employees')->with('success', 'Success!');
+        
+        }catch(\Exception $e){
+            DB::rollBack();
+        }
+        
+        }
     }
+        
 
-}
-}
+//     public function destroy($id)
+//     {
+//         // Find the employee by ID
+//         $employee = Employee::find($id);
+
+//         // Check if the employee exists
+//         if ($employee) {
+//             // Delete the employee
+//             $employee->delete();
+
+//             // Redirect back or to a specific route after deletion
+//             return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
+//         } else {
+//             // Redirect back or to a specific route with an error message
+//             return redirect()->route('employees.index')->with('error', 'Employee not found');
+//         }
+//     }
+// }
+// 
