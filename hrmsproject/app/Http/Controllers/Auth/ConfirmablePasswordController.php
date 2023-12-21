@@ -36,6 +36,8 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
+        $currentUserRole = auth()->user()->role->role;
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 }
