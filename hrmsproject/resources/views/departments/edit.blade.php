@@ -1,4 +1,4 @@
-<x-app-layout>
+<!-- <x-app-layout>
 <x-slot name="header">
     <h1 class="font-semibold text-xl text-gray-800 leading-tight" style="margin-left: 650px;">
         EMPLOYEE DEPARTMENT MANAGEMENT
@@ -8,7 +8,7 @@
 <div class="sidenav">
 
     <a href="#" class="admin-link" style="margin-top: 30px;">
-    <span style="margin-right: 10px;">👤</span> Administrator
+    <span style="margin-right: 10px;">👤</span> {{ Auth::user()->name }}
     <div id="status-indicator" style="margin-left: 60px;"></div>
     </a>
 
@@ -22,6 +22,7 @@
     <a href="salaries"><i class="fas fa-money-bill"></i> Salary</a>
     <a href="leaves"><i class="fas fa-calendar-alt"></i> Leave</a>
     <a href="aboutus"><i class="fas fa-info-circle"></i> About Us</a>
+
 </div>
 
 <div class="py-12" style="margin-left:250px; margin-top:5px;" >
@@ -31,6 +32,14 @@
                   <form action="/department/{{ $department->id }}" method="POST">
                         @csrf
                         @method('PUT')
+
+                        <div class="mb-3 row">
+                          <div class="col-md-6">
+                          </div>
+                          <div class="col-md-6">
+                          </div>
+                        </div>
+                        
                         <div class="mb-3">
                             <label for="name" class="form-label">Department Name</label>
                             <input type="text" name="name" class="form-control" id="name" aria-describedby="name" value="{{ old('name', $department->name) }}">
@@ -99,6 +108,6 @@
         statusIndicator.style.color = 'red'; // Set the color for offline status
     }
 </script>
-</x-app-layout>
+</x-app-layout> -->
 
 

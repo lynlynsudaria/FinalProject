@@ -8,7 +8,7 @@
 <div class="sidenav">
 
     <a href="#" class="admin-link" style="margin-top: 30px;">
-    <span style="margin-right: 10px;">👤</span> Administrator
+    <span style="margin-right: 10px;">👤</span> {{ Auth::user()->name }}
     <div id="status-indicator" style="margin-left: 60px;"></div>
     </a>
 
@@ -38,30 +38,6 @@
                           <div class="col-md-6">
                           </div>
                         </div>
-        
-
-                        <!-- <div class="mb-3 row">
-    <div class="col-md-6">
-        <label for="address" class="form-label">Address</label>
-        <textarea class="form-control" id="address" aria-describedby="address" name="address">{{ old('address', $employee->address) }}</textarea>
-        @error('address')
-            <p class="alert alert-danger">
-                {{$message}}
-            </p>
-        @enderror
-    </div>
-    <div class="col-md-6">
-        <label for="birthday" class="form-label">Birthday</label>
-        <input type="date" class="form-control" id="birthday" name="birthday" aria-describedby="birthday" value="{{ old('birthday', $employee->birthday) }}">
-        @error('birthday')
-            <p class="alert alert-danger">
-                {{ $message }}
-            </p>
-        @enderror
-    </div>
-</div> -->
-
-
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>

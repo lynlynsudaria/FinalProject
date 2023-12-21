@@ -101,42 +101,6 @@ class EmployeeController extends Controller
     }
 }
 
-    // public function create()
-    // {
-    //     return view('employees.create'); // Create a blade file for your form
-    // }
-
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string',
-    //         'address' => 'required|string',
-    //         'age' => 'required|integer',
-    //         'birthday' => 'required|date',
-    //         'email' => 'required|email|unique:employees,email',
-    //         'contact_number' => 'required|string',
-    //         'date_hired' => 'required|date',
-    //         'gender' => 'required|string',
-    //         // Add other validation rules for your fields
-    //     ]);
-
-    //     // Create a new employee
-    //     $employee = Employee::create([
-    //         'name' => $request->input('name'),
-    //         'address' => $request->input('address'),
-    //         'age' => $request->input('age'),
-    //         'birthday' => $request->input('birthday'),
-    //         'email' => $request->input('email'),
-    //         'contact_number' => $request->input('contact_number'),
-    //         'date_hired' => $request->input('date_hired'),
-    //         'gender' => $request->input('gender'),
-    //         // Add other fields as needed
-    //     ]);
-    //     return redirect()->route('employees.index')->with('success', 'Employee added successfully.');
-    //     // return redirect('/employees')->with('success', 'Employee added successfully.');
-    // }
-
-
     public function update(Request $request, $id){
         try{
             //validate the inputs
@@ -183,23 +147,3 @@ class EmployeeController extends Controller
         }
     }
         
-
-//     public function destroy($id)
-//     {
-//         // Find the employee by ID
-//         $employee = Employee::find($id);
-
-//         // Check if the employee exists
-//         if ($employee) {
-//             // Delete the employee
-//             $employee->delete();
-
-//             // Redirect back or to a specific route after deletion
-//             return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
-//         } else {
-//             // Redirect back or to a specific route with an error message
-//             return redirect()->route('employees.index')->with('error', 'Employee not found');
-//         }
-//     }
-// }
-// 

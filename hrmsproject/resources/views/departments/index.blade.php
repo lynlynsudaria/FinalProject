@@ -8,7 +8,7 @@
 <div class="sidenav">
 
     <a href="#" class="admin-link" style="margin-top: 30px;">
-    <span style="margin-right: 10px;">👤</span> Administrator
+    <span style="margin-right: 10px;">👤</span>{{ Auth::user()->name }}
     <div id="status-indicator" style="margin-left: 60px;"></div>
     </a>
 
@@ -79,3 +79,4 @@
     }
 </script>
 </x-app-layout>
+

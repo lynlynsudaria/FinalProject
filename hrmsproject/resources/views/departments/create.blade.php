@@ -1,4 +1,4 @@
-<x-app-layout>
+<!-- <x-app-layout>
 <x-slot name="header">
     <h1 class="font-semibold text-xl text-gray-800 leading-tight" style="margin-left: 650px;">
         EMPLOYEE DEPARTMENT MANAGEMENT
@@ -8,7 +8,7 @@
 <div class="sidenav">
 
     <a href="#" class="admin-link" style="margin-top: 30px;">
-    <span style="margin-right: 10px;">👤</span> Administrator
+    <span style="margin-right: 10px;">👤</span> {{ Auth::user()->name }}
     <div id="status-indicator" style="margin-left: 60px;"></div>
     </a>
 
@@ -65,4 +65,4 @@
         statusIndicator.style.color = 'red'; // Set the color for offline status
     }
 </script>
-</x-app-layout>
+</x-app-layout> -->
