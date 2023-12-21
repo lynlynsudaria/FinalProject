@@ -13,7 +13,7 @@ class Department extends Model
 
     protected $fillable = [
         'department',
-        'is_active_flag',
+    
     ];
 
     

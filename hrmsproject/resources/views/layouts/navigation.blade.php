@@ -8,15 +8,31 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
-                </div> 
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Employee Management System') }}
+                <!-- </div>  -->
+                <h2 class="font-semibold text-xl text-gray-900 leading-tight" style="margin-left: 200px; margin-top: 30px; font-weight: bold; color: darkgreen;">
+                        EMPLOYEE MANAGEMENT SYSTEM
+                    </h2>
+                    
+                <!-- Navigation Links --> 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 500px; margin-top: 30px;">
+                    <x-nav-link :href="route('dashboard')" >
+                        {{ __('HOME') }}
                     </x-nav-link>
+                <!-- </div>
+            </div>
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" > -->
+            <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </form>
                 </div>
             </div>
+            
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">

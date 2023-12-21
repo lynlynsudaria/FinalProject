@@ -9,7 +9,7 @@
 <div class="sidenav">
 
     <a href="#" class="admin-link" style="margin-top: 30px;">
-    <span style="margin-right: 10px;">👤</span> Administrator
+    <span style="margin-right: 10px;">👤</span> {{ Auth::user()->name }}
     <div id="status-indicator" style="margin-left: 60px;"></div>
     </a>
 
@@ -27,7 +27,7 @@
 
 </div>
 
-<table class="table" style="margin-left: 250px;">
+<!-- <table class="table" style="margin-left: 250px;">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -62,4 +62,48 @@
         statusIndicator.style.color = 'red'; // Set the color for offline status
     }
 </script>
+</x-app-layout> -->
+<div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {!! session('success') !!}
+                    </div>
+                    @endif
+                    <p class="text-right">
+                        @if(auth()->user()->role->role == 'admin')
+                        <a href="/employeeDepartment" class="text-black btn btn-primary">Add</a>
+                        @endif
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Leave</th>
+                                <th scope="col">Salary</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($studentsCourses as $index => $item)
+                            <tr>
+                                <th scope="row">{{ $index+1 }}</th>
+                                <td><a class="link-underline-primary link-primary" href="/student/{{ $item->student_id }}">{{$item->student->name }}</a></td>
+                                <td>{{ $item->course->course }}</td>
+                                <td>{{ $item->instructor->name }}</td>
+                                <td>{{ $item->grade }}</td>
+                                <td>{{ $item->is_active_flag }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $studentsCourses->links() }}
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
