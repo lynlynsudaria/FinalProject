@@ -13,5 +13,4 @@ class EmployeeInfoController extends Controller
         return view('employeeInfo.index', compact('employees'));
     }
 
-    
 }

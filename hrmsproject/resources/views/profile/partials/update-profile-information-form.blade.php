@@ -55,7 +55,7 @@
 
         <div>
             <x-input-label for="department" :value="__('Department')" />
-            <x-text-input id="department" name="department" type="text" class="mt-1 block w-full" :value="old('address',$user->department)" autofocus autocomplete="department" disabled value="Vertical" />
+            <x-text-input id="department" name="department" type="text" class="mt-1 block w-full" :value="old('address',$user->department)" autofocus autocomplete="department" disabled value="Operation Department" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 

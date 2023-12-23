@@ -22,7 +22,7 @@ use App\Http\Controllers\EmployeeInfoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //routes for employeesInfo
-Route::get('/employeeInfo', [EmployeeInfoController::class, 'index']);
+Route::get('/employeesInfo', [EmployeeInfoController::class, 'index']);
 Route::get('/employeeInfo/{id}', [EmployeeInfoController::class, 'show']);
 Route::get('/employeeInfo/{id}/edit', [EmployeeInfoController::class, 'edit']);
 Route::get('/employeeInfo', [EmployeeInfoController::class, 'create']);

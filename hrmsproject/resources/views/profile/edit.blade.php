@@ -28,7 +28,7 @@
                         <a href="employees"><i class="fas fa-user"></i> Certificates</a>
                         <a href="leaves"><i class="fas fa-calendar-alt"></i> Apply Resignation</a>
                         <a href="#about"><i class="fas fa-info-circle"></i> About Us</a>
-                        <a href="login"><i class="fas fa-info-circle"></i> Log out</a>
+                       
 
 
                     </div>
