@@ -6,12 +6,7 @@
 </x-slot>
 
 <div class="sidenav">
-
-<a href="#" class="admin-link" style="margin-top: 30px;">
-    <span style="margin-right: 10px;">👤</span> {{ Auth::user()->name }}
-    <div id="status-indicator" style="margin-left: 60px;"></div>
-    </a>
-
+    <p>👤👤👤EMS</p>
     <div class="search-bar" style="margin-bottom: 20px;">
         <input type="text" class="search-input" placeholder="Search...">
     </div>
@@ -22,6 +17,17 @@
     <a href="salaries"><i class="fas fa-money-bill"></i> Salary</a>
     <a href="leaves"><i class="fas fa-calendar-alt"></i> Leave</a>
     <a href="aboutus"><i class="fas fa-info-circle"></i> About Us</a>
+
+    <!-- <a href="#" class="admin-link" style="margin-top: 80px;">
+    <span style="margin-right: 10px;">👤</span> {{ Auth::user()->name }}
+    Administrator
+    <div id="status-indicator" style="margin-left: 60px;"></div>
+    </a> -->
+    <a href="#" class="admin-link" style="margin-top: 80px;">
+    <span style="margin-right: 10px; font-size: 14px;">👤</span> {{ Auth::user()->name }}
+    <span style="font-size: 16px; margin-left: 40px;">Administrator</span>
+    <div class="online-indicator"></div>
+</a>
     
 
 </div>

@@ -9,7 +9,7 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 <!-- </div>  -->
-                <h2 class="font-semibold text-xl text-gray-900 leading-tight" style="margin-left: 200px; margin-top: 30px; font-weight: bold; color: darkgreen;">
+                <h2 class="font-semibold text-xl text-gray-900 leading-tight" style="margin-left: 200px; margin-top: 30px; font-weight: bold; color: rgb(22, 199, 218);">
                         EMPLOYEE MANAGEMENT SYSTEM
                     </h2>
                     

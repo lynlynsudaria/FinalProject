@@ -70,8 +70,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     <!-- Modal -->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -108,6 +108,6 @@
         statusIndicator.style.color = 'red'; // Set the color for offline status
     }
 </script>
-</x-app-layout> -->
+</x-app-layout>  -->
 
-
+ -->

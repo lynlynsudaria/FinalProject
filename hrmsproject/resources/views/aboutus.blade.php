@@ -28,17 +28,17 @@
 
 </div>
 
-<button class="accordion" style="margin-left:260px; margin-top:50px; color: green;">MISSION</button>
+<button class="accordion" style="margin-left:260px; margin-top:50px; color: rgb(22, 199, 218);">MISSION</button>
 <div class="panel">
   <p style="margin-left:260px">To empower organizations with a robust Employee Management System (EMS) that optimizes workforce efficiency, fosters a positive workplace culture, and ensures seamless collaboration between employees and management. Our mission is to provide a user-friendly, comprehensive solution that streamlines HR processes, enhances employee engagement, and contributes to the overall success and growth of our client organizations.</p>
 </div>
 
-<button class="accordion" style="margin-left:260px; margin-top:50px; color: green;">VISION</button>
+<button class="accordion" style="margin-left:260px; margin-top:50px; color: rgb(22, 199, 218);">VISION</button>
 <div class="panel">
   <p style="margin-left:260px">Our vision is to be the leading provider of innovative Employee Management Systems globally, revolutionizing the way organizations manage and interact with their workforce. We aspire to create a future where businesses, regardless of size or industry, leverage cutting-edge technology to nurture a motivated and skilled workforce. Through continuous innovation and a commitment to excellence, we aim to be the catalyst for positive organizational transformation, promoting productivity, transparency, and employee well-being.</p>
 </div>
 
-<button class="accordion" style="margin-left:260px; margin-top:50px;color: green;">ABOUT US</button>
+<button class="accordion" style="margin-left:260px; margin-top:50px;color: rgb(22, 199, 218);">ABOUT US</button>
 <div class="panel">
   <p style="margin-left:260px">Welcome to to our company, a pioneer in providing comprehensive Employee Management Solutions. With a rich history of [number of years] years in the industry, we have been at the forefront of transforming how organizations manage their most valuable asset - their people.
   <p style="margin-left:260px">Why Choose our Company Name?</p>
@@ -49,7 +49,7 @@
 <p style="margin-left:260px">Join us on the journey of transforming HR management, optimizing productivity, and building a motivated workforce.</p>
 </div>
 
-<button class="accordion" style="margin-left:260px; margin-top:50px; color: green;">CONTACT US</button>
+<button class="accordion" style="margin-left:260px; margin-top:50px; color: rgb(22, 199, 218);">CONTACT US</button>
 <div class="panel">
   <p style="margin-left:260px">Have questions or interested in learning more about us? Our dedicated team is here to assist you.</p>
   <p style="margin-left:260px">Contact Information:Roxxane Jean Mabao</p>
@@ -57,7 +57,6 @@
   <p style="margin-left:260px">Phone: 0926-242-4541</p>
   <p style="margin-left:260px">Email: example@gmail.com</p>
   <p style="margin-left:260px">For assistance with our Employee Management System or any inquiries, our customer support team is available:</p>
-  <p style="margin-left:260px">Connect With Us:</p>
   <p style="margin-left:260px">Stay updated on the latest news, features, and insights by following us on social media:</p>
 
   <p style="margin-left:260px">Connect With Us:</p>
